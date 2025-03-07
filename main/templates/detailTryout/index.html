@@ -19,7 +19,8 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'main:tryout_edit' tryout.id %}">Edit Tryout</a>
-    <a href="{% url 'main:show_main' %}">Kembali ke Daftar Tryout</a>
+    <a href="{% url 'main:tryout_edit' tryout.id %}"><button>Edit Tryout</button></a>
+    <a href="{% url 'main:tryout_delete' tryout.id %}"><button>Delete Tryout</button></a>
+    <a href="{% url 'main:show_main' %}"><button>Kembali ke Daftar Tryout</button></a>
 </body>
 </html>

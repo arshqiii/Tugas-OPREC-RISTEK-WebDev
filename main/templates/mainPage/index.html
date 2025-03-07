@@ -13,13 +13,13 @@
             <li>
                 <h2>{{ tryout.title }}</h2>
                 <p>{{ tryout.description }}</p>
-                <a href="{% url 'main:tryout_detail' tryout.id %}">Lihat Detail</a>
+                <a href="{% url 'main:tryout_detail' tryout.id %}"><button>Attempt Quiz</button></a>
             </li>
         {% empty %}
-            <p>Belum ada tryout tersedia.</p>
+            <p>No Tryouts available</p>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'main:create_tryout' %}">Buat Tryout Baru</a>
+    <a href="{% url 'main:create_tryout' %}"><button>Add New Tryout</button></a>
 </body>
 </html>
