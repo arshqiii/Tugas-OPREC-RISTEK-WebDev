@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Tryout</title>
+</head>
+<body>
+    <h1>Daftar Tryout</h1>
+    
+    <ul>
+        {% for tryout in tryouts %}
+            <li>
+                <h2>{{ tryout.title }}</h2>
+                <p>{{ tryout.description }}</p>
+                <a href="{% url 'tryout_detail' tryout.id %}">Lihat Detail</a>
+            </li>
+        {% empty %}
+            <p>Belum ada tryout tersedia.</p>
+        {% endfor %}
+    </ul>
+
+    {% comment %} <a href="{% url 'tryout_create' %}">Buat Tryout Baru</a> {% endcomment %}
+</body>
+</html>
