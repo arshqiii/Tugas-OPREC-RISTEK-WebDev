@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Tryout</title>
+    <title>Add Question</title>
 </head>
 <body>
-    <h1>Add Tryout</h1>
+    <h1>Add Question for {{ tryout.title }}</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit">Save Question</button>
     </form>
 
-    <a href="{% url 'main:show_main' %}"><button>Return to main</button></a>
+    <a href="{% url 'main:tryout_detail' tryout.id %}"><button>Cancel</button></a>
 </body>
 </html>

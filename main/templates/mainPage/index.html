@@ -6,14 +6,19 @@
     <title>Daftar Tryout</title>
 </head>
 <body>
-    <h1>Daftar Tryout</h1>
+    <h1>Tryout lists</h1>
     
     <ul>
         {% for tryout in list_tryout %}
             <li>
                 <h2>{{ tryout.title }}</h2>
                 <p>{{ tryout.description }}</p>
-                <a href="{% url 'main:tryout_detail' tryout.id %}"><button>Attempt Quiz</button></a>
+                <a href="{% url 'main:tryout_detail' tryout.id %}">
+                    <button>Quiz Details</button>
+                </a>
+                <a href="">
+                    <button>Attempt Quiz</button>
+                </a>
             </li>
         {% empty %}
             <p>No Tryouts available</p>

@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Tryout</title>
 </head>
 <body>
     <h1>{{ tryout.title }}</h1>
     <p>{{ tryout.description }}</p>
-    <p>Dibuat pada: {{ tryout.created_at }}</p>
-    
-    <h2>Pertanyaan</h2>
-    <ul>
-        {% for question in questions %}
-            <li>{{ question.text }} - {% if question.answer %}Benar{% else %}Salah{% endif %}</li>
-        {% empty %}
-            <p>Belum ada pertanyaan.</p>
-        {% endfor %}
-    </ul>
+    <p>Created at: {{ tryout.created_at }}</p>
 
-    <a href="{% url 'main:tryout_edit' tryout.id %}"><button>Edit Tryout</button></a>
-    <a href="{% url 'main:tryout_delete' tryout.id %}"><button>Delete Tryout</button></a>
-    <a href="{% url 'main:show_main' %}"><button>Kembali ke Daftar Tryout</button></a>
+    <h2>Pertanyaan</h2>
+
+{% if questions %}
+    {% for question in questions %}
+    
+{% else %}
+    <p>Belum ada pertanyaan.</p>
+{% endif %}
+
+
+    <a href="{% url 'main:question_create' tryout.id %}">
+        <button>Add Question</button>
+    </a>
+
+    <a href="{% url 'main:tryout_edit' tryout.id %}"
+        ><button>Edit Tryout</button></a
+    >
+    <a href="{% url 'main:tryout_delete' tryout.id %}"
+        ><button>Delete Tryout</button></a
+    >
+    <a href="{% url 'main:show_main' %}"><button>Return to main</button></a>
 </body>
 </html>

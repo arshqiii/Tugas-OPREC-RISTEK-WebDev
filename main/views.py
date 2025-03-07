@@ -4,13 +4,14 @@ from django.urls import reverse
 from .models import Tryout, Question
 from .forms import TryoutForm, QuestionForm
 
+#========================================================================
 def show_main(req):
     tryout = Tryout.objects.all()
     context = {
         'list_tryout': tryout
     }
     return render(req, "mainPage/index.html", context)
-
+#========================================================================
 def tryout_create(req):
     if req.method == "POST":
         form = TryoutForm(req.POST)
@@ -21,7 +22,7 @@ def tryout_create(req):
         form = TryoutForm()
     context = {'form': form}
     return render(req, 'addTryout/index.html', context)
-
+#========================================================================
 def tryout_edit(req, id):
     tryout = get_object_or_404(Tryout, pk=id)
 
@@ -29,14 +30,14 @@ def tryout_edit(req, id):
         form = TryoutForm(req.POST, instance=tryout)
         if form.is_valid():
             form.save()
-            return redirect('main:tryout_detail', id)  # Perbaiki di sini!
+            return redirect('main:tryout_detail', id)
 
     else:
         form = TryoutForm(instance=tryout)
 
     context = {'form': form, 'tryout': tryout}
     return render(req, 'editTryout/index.html', context)
-
+#========================================================================
 def tryout_delete(req, id):
     tryout = get_object_or_404(Tryout, pk=id)
     tryout.delete()
@@ -48,6 +49,7 @@ def tryout_detail(req, id):
     
     context = {
         'tryout': tryout,
-        'questions': questions
+        'questions': questions,
     }
     return render(req, 'detailTryout/index.html', context)
+#========================================================================

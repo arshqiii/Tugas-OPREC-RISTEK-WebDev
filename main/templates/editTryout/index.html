@@ -11,9 +11,9 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }} 
-        <button type="submit">Simpan Perubahan</button>
+        <button type="submit">Save Changes</button>
     </form>
 
-    <a href="{% url 'main:tryout_detail' tryout.id %}"><button>Batal</button></a>  
+    <a href="{% url 'main:tryout_detail' tryout.id %}"><button>Cancel</button></a>  
 </body>
 </html>
