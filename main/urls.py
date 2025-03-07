@@ -9,4 +9,7 @@ urlpatterns = [
     path('edit_tryout/<int:id>/', tryout_edit, name='tryout_edit'),
     path('delete_tryout/<int:id>/', tryout_delete, name='tryout_delete'),
     path('detail_tryout/<int:id>/', tryout_detail, name='tryout_detail'),
+    path('add_question/<int:tryout_id>/', question_create, name='question_create'),
+    path('edit_question/<int:id>/', question_edit, name='question_edit'),
+    path('delete_question/<int:id>/', question_delete, name='question_delete'),
 ]
