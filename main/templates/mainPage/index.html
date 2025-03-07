@@ -9,17 +9,17 @@
     <h1>Daftar Tryout</h1>
     
     <ul>
-        {% for tryout in tryouts %}
+        {% for tryout in list_tryout %}
             <li>
                 <h2>{{ tryout.title }}</h2>
                 <p>{{ tryout.description }}</p>
-                <a href="{% url 'tryout_detail' tryout.id %}">Lihat Detail</a>
+                <a href="{% url 'main:tryout_detail' tryout.id %}">Lihat Detail</a>
             </li>
         {% empty %}
             <p>Belum ada tryout tersedia.</p>
         {% endfor %}
     </ul>
 
-    {% comment %} <a href="{% url 'tryout_create' %}">Buat Tryout Baru</a> {% endcomment %}
+    <a href="{% url 'main:create_tryout' %}">Buat Tryout Baru</a>
 </body>
 </html>

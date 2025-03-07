@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tryout</title>
+</head>
+<body>
+    <h1>Edit Tryout</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <button type="submit">Simpan Perubahan</button>
+    </form>
+
+    <a href="{% url 'main:tryout_detail' tryout.id %}">Batal</a>  
+</body>
+</html>
