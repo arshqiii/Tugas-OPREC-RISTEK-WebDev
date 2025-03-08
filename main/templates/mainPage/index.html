@@ -5,21 +5,21 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="relative p-5 h-screen bg-blue-50">
-    <h1 class="text-4xl font-extrabold dark:text-black mb-4">Tryout Lists</h1>
-    <a href="{% url 'main:create_tryout' %}" class="my-5 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg">
+{% include 'navbar.html' %}
+<div class="relative m-10 h-screen">
+    <a href="{% url 'main:create_tryout' %}" class="my-5 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
         Add New Tryout
     </a>
     <div class="flex flex-col gap-4">
         {% for tryout in list_tryout %}
-        <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-200 dark:border-gray-700">
+        <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-200 dark:border-gray-700 shadow-md transition transform hover:-translate-y-1 hover:scale-100 justify-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{{ tryout.title }}</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-600">{{ tryout.description }}</p>
             <div class="flex flex-row gap-3">
-                <a href="{% url 'main:tryout_detail' tryout.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg">
+                <a href="{% url 'main:tryout_detail' tryout.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
                     Quiz Details
                 </a>
-                <a href="{% url 'main:attempt_quiz' tryout.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg">
+                <a href="{% url 'main:attempt_quiz' tryout.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
                     Attempt Quiz
                 </a>
             </div>
@@ -29,4 +29,5 @@
         {% endfor %}
     </div>
 </div>
+{% include 'footer.html' %}
 {% endblock content %}
