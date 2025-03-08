@@ -25,6 +25,8 @@
         {% endfor %}
     </ul>
     {% if tryout.status == False  %}
+    <a href="{% url 'main:tryout_edit' tryout.id %}">Edit Tryout</a>
+    <a href="{% url 'main:tryout_delete' tryout.id %}">Delete Tryout</a>
     <a href="{% url 'main:question_create' tryout.id %}">Add Question</a>
     {% endif %}
     <br>
