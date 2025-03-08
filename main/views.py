@@ -88,3 +88,41 @@ def question_delete(req, id):
     tryout_id = question.tryout.id
     question.delete()
     return redirect('main:tryout_detail', tryout_id)
+#========================================================================
+def attempt_quiz(req, tryout_id):
+    tryout = get_object_or_404(Tryout, pk=tryout_id)
+    questions = Question.objects.filter(tryout=tryout)
+    
+    if req.method == "POST":
+        score = 0
+        total_questions = questions.count()
+        user_answers = {}
+        
+        for question in questions :
+            answer_chosen = req.POST.get(f"question_{question.id}")
+            correct_answer = "True" if question.answer else "False"
+            
+            is_correct = answer_chosen == correct_answer
+            
+            if is_correct :
+                score += 1
+            
+            user_answers[question.id] = {
+                "question" : question.text,
+                "user_answer" : answer_chosen,
+                "correct_answer" : correct_answer,
+                "is_correct" : is_correct,
+            }
+            
+        tryout.status = True
+        tryout.save()
+        
+        return render (req, "quizResult/index.html", {
+            "tryout" : tryout,
+            "score" : score,
+            "total_question" : total_questions,
+            "user_answers" : user_answers,
+        })
+    
+    context = {"tryout": tryout, "questions": questions}
+    return render(req, "attemptQuiz/index.html", context)

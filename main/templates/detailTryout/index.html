@@ -15,15 +15,18 @@
             <li>
                 <p><strong>Q:</strong> {{ question.text }}</p>
                 <p><strong>Answer:</strong> {% if question.answer %}True{% else %}False{% endif %}</p>
+                {% if tryout.status == False %}
                 <a href="{% url 'main:question_edit' question.id %}">Edit</a> |
                 <a href="{% url 'main:question_delete' question.id %}">Delete</a>
+                {% endif %}
             </li>
         {% empty %}
             <p>No questions available.</p>
         {% endfor %}
     </ul>
-
+    {% if tryout.status == False  %}
     <a href="{% url 'main:question_create' tryout.id %}">Add Question</a>
+    {% endif %}
     <br>
     <a href="{% url 'main:show_main' %}">Back</a>
 </body>

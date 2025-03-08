@@ -12,4 +12,5 @@ urlpatterns = [
     path('add_question/<int:tryout_id>/', question_create, name='question_create'),
     path('edit_question/<int:id>/', question_edit, name='question_edit'),
     path('delete_question/<int:id>/', question_delete, name='question_delete'),
+    path("attempt_quiz/<int:tryout_id>/", attempt_quiz, name="attempt_quiz"),
 ]

@@ -1,0 +1,20 @@
+<h2>Quiz Result</h2>
+<p>Score: {{ score }} / {{ total_questions }}</p>
+
+<h3>Your Answers:</h3>
+<ul>
+    {% for qid, answer in user_answers.items %}
+        <li>
+            {{ answer.question }} - 
+            Your Answer: <b>{{ answer.user_answer }}</b> | 
+            Correct: <b>{{ answer.correct_answer }}</b> 
+            {% if answer.is_correct %}
+                ✅
+            {% else %}
+                ❌
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'main:show_main' %}">Back to Main</a>
