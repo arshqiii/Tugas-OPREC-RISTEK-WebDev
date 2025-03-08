@@ -16,7 +16,7 @@
     <a href="{% url 'main:create_tryout' %}" class="my-5 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 justify-center">
         Add New Tryout
     </a>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 mt-5 min-h-screen">
         {% for tryout in list_tryout %}
         <div class="w-full p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-200 dark:border-gray-700 shadow-md transition transform hover:-translate-y-1 hover:scale-100 justify-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{{ tryout.title }}</h5>
