@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar Tryout</title>
-  </head>
-  <body>
-    <h1>Tryout lists</h1>
-    <a href="{% url 'main:create_tryout' %}"><button>Add New Tryout</button></a>
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Daftar Tryout</title>
+{% endblock meta %}
+
+{% block content %}
+    <h1>Tryout Lists</h1>
+    <a href="{% url 'main:create_tryout' %}">
+        <button>Add New Tryout</button>
+    </a>
 
     <ul>
-      {% for tryout in list_tryout %}
-      <h2>{{ tryout.title }}</h2>
-      <p>{{ tryout.description }}</p>
-      <a href="{% url 'main:tryout_detail' tryout.id %}">
-        <button>Quiz Details</button>
-      </a>
-      <a href="{% url 'main:attempt_quiz' tryout.id %}">
-        <button>Attempt Quiz</button>
-      </a>
-      {% empty %}
-      <p>No Tryouts available</p>
-      {% endfor %}
+        {% for tryout in list_tryout %}
+            <li>
+                <h2>{{ tryout.title }}</h2>
+                <p>{{ tryout.description }}</p>
+                <a href="{% url 'main:tryout_detail' tryout.id %}">
+                    <button >Quiz Details</button>
+                </a>
+                <a href="{% url 'main:attempt_quiz' tryout.id %}">
+                    <button>Attempt Quiz</button>
+                </a>
+            </li>
+        {% empty %}
+            <p>No Tryouts available</p>
+        {% endfor %}
     </ul>
-  </body>
-</html>
+{% endblock content %}

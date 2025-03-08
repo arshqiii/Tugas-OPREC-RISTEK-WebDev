@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Tryout</title>
-</head>
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Add Tryout</title>
+{% endblock meta %}
+
+{% block content %}
 <body>
     <h1>Add Tryout</h1>
 
@@ -16,4 +16,4 @@
 
     <a href="{% url 'main:show_main' %}"><button>Return to main</button></a>
 </body>
-</html>
+{% endblock %}
