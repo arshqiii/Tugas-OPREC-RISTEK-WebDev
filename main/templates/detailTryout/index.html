@@ -1,35 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ tryout.title }}</title>
-</head>
-<body>
-    <h1>{{ tryout.title }}</h1>
-    <p>{{ tryout.description }}</p>
+{% extends 'base.html' %}
 
-    <h2>Questions</h2>
-    <ul>
-        {% for question in questions %}
-            <li>
-                <p><strong>Q:</strong> {{ question.text }}</p>
-                <p><strong>Answer:</strong> {% if question.answer %}True{% else %}False{% endif %}</p>
-                {% if tryout.status == False %}
-                <a href="{% url 'main:question_edit' question.id %}">Edit</a> |
-                <a href="{% url 'main:question_delete' question.id %}">Delete</a>
-                {% endif %}
-            </li>
-        {% empty %}
-            <p>No questions available.</p>
-        {% endfor %}
-    </ul>
-    {% if tryout.status == False  %}
-    <a href="{% url 'main:tryout_edit' tryout.id %}">Edit Tryout</a>
-    <a href="{% url 'main:tryout_delete' tryout.id %}">Delete Tryout</a>
-    <a href="{% url 'main:question_create' tryout.id %}">Add Question</a>
-    {% endif %}
-    <br>
-    <a href="{% url 'main:show_main' %}">Back</a>
+{% block meta %}
+<title>{{ tryout.title }}</title>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<body class="w-screen flex flex-col bg-gray-100">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full h-screen">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ tryout.title }}</h1>
+        <p class="text-gray-600 mb-4">{{ tryout.description }}</p>
+
+        <h2 class="text-xl font-semibold text-gray-700 mb-2">Questions</h2>
+        <div class="space-y-4">
+            {% for question in questions %}
+                <div class="bg-gray-50 p-4 rounded-lg shadow">
+                    <p class="text-gray-800 font-medium"><strong>Question:</strong> {{ question.text }}</p>
+                    <p class="text-gray-600"><strong>Answer:</strong> {% if question.answer %}True{% else %}False{% endif %}</p>
+                    {% if not tryout.status %}
+                    <div class="mt-2 flex gap-2">
+                        <a href="{% url 'main:question_edit' question.id %}" class="text-blue-600 hover:underline">Edit</a>
+                        <span class="text-gray-400">|</span>
+                        <a href="{% url 'main:question_delete' question.id %}" class="text-red-600 hover:underline">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p class="text-gray-500">No questions available.</p>
+            {% endfor %}
+        </div>
+
+        {% if not tryout.status %}
+        <div class="mt-4 flex flex-wrap gap-2">
+            <a href="{% url 'main:question_create' tryout.id %}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Add Question</a>
+            <a href="{% url 'main:tryout_edit' tryout.id %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Edit Tryout</a>
+            <a href="{% url 'main:tryout_delete' tryout.id %}" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Delete Tryout</a>
+        </div>
+        {% endif %}
+
+        <div class="mt-6">
+            <a href="{% url 'main:show_main' %}" class="text-gray-700 hover:underline">Back</a>
+        </div>
+    </div>
 </body>
-</html>
+{% include 'footer.html' %}
+{% endblock content %}

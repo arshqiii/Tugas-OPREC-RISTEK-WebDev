@@ -3,12 +3,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Tryout, Question
 from .forms import TryoutForm, QuestionForm
+from .filters import TryoutFilter
 
 #========================================================================
 def show_main(req):
-    tryout = Tryout.objects.all()
+    tryouts = Tryout.objects.all()
+    myFilter = TryoutFilter(req.GET, queryset=tryouts)
+    tryouts = myFilter.qs
     context = {
-        'list_tryout': tryout
+        'list_tryout': tryouts,
+        'filter' : myFilter,
     }
     return render(req, "mainPage/index.html", context)
 #========================================================================
