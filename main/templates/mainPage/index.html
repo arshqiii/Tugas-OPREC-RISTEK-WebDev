@@ -29,7 +29,7 @@
         {% for tryout in list_tryout %}
         <div class="w-full p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-200 dark:border-gray-700 shadow-md transition transform hover:-translate-y-1 hover:scale-100 justify-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{{ tryout.title }}</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-600">{{ tryout.description }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-600">Category : {{tryout.category}} </p>
             <span class="mb-4 pb-10 font-normal text-gray-500">Created : {{ tryout.created_at }}</span>
             <div class="flex flex-row gap-3 mt-3">
                 <a href="{% url 'main:tryout_detail' tryout.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 justify-center">

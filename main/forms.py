@@ -5,7 +5,7 @@ from main.models import Tryout, Question
 class TryoutForm(ModelForm):
     class Meta :
         model = Tryout
-        fields = ['title', 'description']
+        fields = ['title', 'category']
 
 class QuestionForm(ModelForm):
     ANSWER_CHOICES = [
