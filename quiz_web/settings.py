@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-%!*v#j!zdke-)rhpmxph*^o0u(=zab&p%l_ub+ts8$mnmtu)ag
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [".vercel.app/"]
 
 # Application definition
 
@@ -43,8 +42,6 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'django_filters',
 ]
-
-ALLOWED_HOSTS = ["https://tugas-oprec-ristek-web-dev.vercel.app/"]
 
 TAILWIND_APP_NAME = 'theme'
 
