@@ -1,9 +1,9 @@
-import django_filters
-from django_filters import DateFilter
+from django_filters import FilterSet, DateFilter
 from .models import Tryout
 
-class TryoutFilter(django_filters.FilterSet):
+class TryoutFilter(FilterSet):
+    date = DateFilter(field_name="created_at", lookup_expr='gte', label='Created at (from)')
     class Meta:
         model = Tryout
         fields = '__all__'
-        exclude = ["updated_at", "status"]
+        exclude = ["created_at","updated_at", "status"]

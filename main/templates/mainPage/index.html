@@ -17,9 +17,14 @@
                 {{field}}
             </div>
             {% endfor %}
-            <button type="submit" class="mt-5 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
-                Search
-            </button>
+            <div class="flex flex-row gap-4">
+                <button type="submit" class="mt-5 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
+                    Search
+                </button>
+                <button type="button" onclick="resetFilters()" class="mt-5 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 shadow-md transition transform hover:-translate-y-1 hover:scale-10 flex items-center justify-center text-center">
+                    Reset
+                </button>
+            </div>
         </div>
     </form>
     <a href="{% url 'main:create_tryout' %}" class="mt-5 inline-flex items-center px-4 py-3 text-lg font-medium text-center text-white bg-blue-700 rounded-lg shadow-md transition transform hover:-translate-y-1 hover:scale-10 justify-center">
@@ -45,5 +50,11 @@
         {% endfor %}
     </div>
 </div>
+<script>
+    function resetFilters() {
+        document.querySelectorAll("input, select").forEach(field => {field.value = ""});
+        document.querySelector("form").submit();
+    }
+</script>    
 {% include 'footer.html' %}
 {% endblock content %}
