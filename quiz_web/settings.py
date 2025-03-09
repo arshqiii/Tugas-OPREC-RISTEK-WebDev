@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 
+ALLOWED_HOSTS = ["https://tugas-oprec-ristek-web-dev.vercel.app/"]
+
 TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
