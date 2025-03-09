@@ -1,20 +1,33 @@
-<h2>Quiz Result</h2>
-<p>Score: {{ score }} / {{ total_questions }}</p>
+{% extends 'base.html' %}
 
-<h3>Your Answers:</h3>
-<ul>
-    {% for qid, answer in user_answers.items %}
-        <li>
-            {{ answer.question }} - 
-            Your Answer: <b>{{ answer.user_answer }}</b> | 
-            Correct: <b>{{ answer.correct_answer }}</b> 
-            {% if answer.is_correct %}
-                ✅
-            {% else %}
-                ❌
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+{% block meta %}
+<title>Quiz Result</title>
+{% endblock meta %}
 
-<a href="{% url 'main:show_main' %}">Back to Main</a>
+{% block content %}
+{% include "navbar.html" %}
+<div class="flex flex-col min-h-screen">
+    <div class="flex flex-col items-center m-5 gap-2">
+        <h2 class="text-4xl font-bold text-gray-800 mb-2">Quiz Result</h2>
+        <p class="text-lg text-gray-600 mb-4">Score: {{ score }} / {{ total_question }}</p>
+    </div>
+    
+    <div class="flex flex-col m-5 pt-3 pb-5 space-y-4 min-h-svh">
+        <h3 class="text-xl font-semibold text-gray-700 mb-3 pb-3">Your Answers:</h3>
+        {% for qid, answer in user_answers.items %}
+            <div class="flex flex-col bg-gray-50 p-4 rounded-lg shadow gap-3">
+                <p class="text-2xl text-gray-800 font-medium">{{ answer.question }}</p> 
+                <p> 
+                    - Your Answer: <b>{{ answer.user_answer }} {% if answer.is_correct %} (Correct) ✅ {% else %} (Wrong) ❌ {% endif %} </b>
+                </p>
+                {% if answer.is_correct == False %}
+                <p> - Correct Answer: <b>{{ answer.correct_answer }}</b> </p>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <a href="{% url 'main:show_main' %}" class="mt-5 max-w-32 bg-blue-500  text-white px-4 py-2 rounded-lg shadow-md transition transform
+        hover:bg-blue-600 hover:-translate-y-1 hover:scale-10" >Back to Main</a>
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock content %}
