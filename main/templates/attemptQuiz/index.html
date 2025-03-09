@@ -25,7 +25,9 @@
                     </label>
                 </div>
             {% endfor %}
-            <button class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
+            <a href="{% url 'main:show_main' %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg 
+            shadow-md transition transform hover:-translate-y-1 hover:scale-10 justify-center" >Back to Main</a>
+            <button class="inline-flex bg-green-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
             hover:bg-green-600 hover:-translate-y-1 hover:scale-10" type="submit">Submit</button>
         </div>
     </form>

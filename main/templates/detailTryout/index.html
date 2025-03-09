@@ -13,7 +13,7 @@
             <p class="text-lg text-gray-600 mb-4">{{ tryout.description }}</p>
         </div>
 
-        <h2 class="text-xl font-semibold text-gray-700 mb-3 pb-3">Questions</h2>
+        <h2 class="flex flex-col text-xl font-semibold text-gray-700 mb-3 pb-3">Questions</h2>
         <div class="space-y-4">
             {% for question in questions %}
                 <div class="flex flex-col bg-gray-50 p-4 rounded-lg shadow gap-3">
@@ -34,14 +34,18 @@
 
         {% if not tryout.status %}
         <div class="mt-4 flex flex-wrap gap-2">
-            <a href="{% url 'main:question_create' tryout.id %}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Add Question</a>
-            <a href="{% url 'main:tryout_edit' tryout.id %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Edit Tryout</a>
-            <a href="{% url 'main:tryout_delete' tryout.id %}" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Delete Tryout</a>
+            <a href="{% url 'main:question_create' tryout.id %}" class="inline-flex bg-green-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
+            hover:bg-green-600 hover:-translate-y-1 hover:scale-10">Add Question</a>
+            <a href="{% url 'main:tryout_edit' tryout.id %}" class="inline-flex bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
+            hover:bg-blue-600 hover:-translate-y-1 hover:scale-10">Edit Tryout</a>
+            <a href="{% url 'main:tryout_delete' tryout.id %}" class="inline-flex bg-red-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
+            hover:bg-red-600 hover:-translate-y-1 hover:scale-10">Delete Tryout</a>
         </div>
         {% endif %}
 
         <div class="mt-6">
-            <a href="{% url 'main:show_main' %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md transition transform hover:bg-blue-600 hover:-translate-y-1 hover:scale-10">Back</a>
+            <a href="{% url 'main:show_main' %}" class="inline-flex bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md transition transform
+            hover:bg-blue-600 hover:-translate-y-1 hover:scale-10">Back</a>
         </div>
     </div>
 </body>
